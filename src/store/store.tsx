@@ -1,8 +1,7 @@
 import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/es/storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import storageSession from 'reduxjs-toolkit-persist/lib/storage/session';
-import thunk from 'redux-thunk';
+import storageSession from 'redux-persist/es/storage/session';
 import gameSettingsReducer from './GameSettingsSlice';
 import gameCycleReducer from './GameCycleSlice';
 import gameDataReducer from './GameDataSlice';
@@ -34,7 +33,19 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: [thunk],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [
+          'persist/PERSIST',
+          'persist/REHYDRATE',
+          'persist/PAUSE',
+          'persist/PURGE',
+          'persist/REGISTER',
+          'persist/FLUSH',
+        ],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);

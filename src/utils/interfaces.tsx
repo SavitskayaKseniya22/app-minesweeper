@@ -15,20 +15,20 @@ export interface GameDataState {
 }
 
 export enum FinishedGameStatusType {
-  'LOSE' = 'lose',
-  'WIN' = 'win',
+  LOSE = 'lose',
+  WIN = 'win',
 }
 
 export enum ClickType {
-  'LEFT' = 'left',
-  'RIGHTADD' = 'rightAdd',
-  'RIGHTDEL' = 'rightDel',
+  LEFT = 'left',
+  RIGHTADD = 'rightAdd',
+  RIGHTDEL = 'rightDel',
 }
 
 export enum MainFormFieldType {
-  'NAME' = 'name',
-  'BOMBNUMBER' = 'bombNumber',
-  'DIFFICULTY' = 'difficulty',
+  NAME = 'name',
+  BOMBNUMBER = 'bombNumber',
+  DIFFICULTY = 'difficulty',
 }
 
 export enum CellType {
@@ -36,20 +36,20 @@ export enum CellType {
   'opened-bombed-chosen' = 'opened-bombed-chosen',
   'opened-bombed-questioned' = 'opened-bombed-questioned',
   'opened-free' = 'opened-free',
-  'questioned' = 'questioned',
-  'false' = 'false',
+  questioned = 'questioned',
+  false = 'false',
 }
 
 export enum CellBombStatusType {
-  'OPENED' = 'opened',
-  'EMPTY' = 'empty',
-  'BOMBED' = 'bombed',
-  'QUESTIONED' = 'questioned',
-  'DEFAULT' = 'default',
+  OPENED = 'opened',
+  EMPTY = 'empty',
+  BOMBED = 'bombed',
+  QUESTIONED = 'questioned',
+  DEFAULT = 'default',
 }
 
 export enum DifficultyType {
-  'HARD' = 'hard',
-  'MEDIUM' = 'medium',
-  'EASY' = 'easy',
+  HARD = 'hard',
+  MEDIUM = 'medium',
+  EASY = 'easy',
 }
