@@ -4,14 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { CellBombStatusType, CellType, ClickType } from '@/utils/interfaces';
 import { checkFontColor, checkBackgroundColor } from '@/utils/cellStyles';
-import { fonts } from '@/styles/tokens';
+import { colors, fonts } from '@/styles/tokens';
 
-export const StyledCell = styled('li')<{ 'data-status'?: CellBombStatusType }>`
+export const StyledCell = styled('button')<{ 'data-status'?: CellBombStatusType }>`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
   font-family: ${fonts.display};
+  font-size: inherit;
   color: ${(props) => checkFontColor(props['data-status'])};
   cursor: ${(props) =>
     props['data-status'] === CellBombStatusType.DEFAULT ||
@@ -19,6 +21,13 @@ export const StyledCell = styled('li')<{ 'data-status'?: CellBombStatusType }>`
       ? 'pointer'
       : 'default'};
   background-color: ${(props) => checkBackgroundColor(props['data-status'])};
+  border: none;
+
+  &:focus-visible {
+    z-index: 1;
+    outline: 2px solid ${colors.focus};
+    outline-offset: -2px;
+  }
 
   .cell-icon-secondary {
     position: absolute;
@@ -30,6 +39,7 @@ export const StyledCell = styled('li')<{ 'data-status'?: CellBombStatusType }>`
 
 function Cell({
   cellSettings,
+  isDisabled,
   handleStartAndFinishGame,
   handlePressedIndex,
 }: {
@@ -38,6 +48,7 @@ function Cell({
     nearbyBombs: number;
     isOpen: CellType;
   };
+  isDisabled: boolean;
   handleStartAndFinishGame: () => void;
   handlePressedIndex: (button: ClickType) => void;
 }) {
@@ -46,12 +57,12 @@ function Cell({
     handlePressedIndex(ClickType.LEFT);
   };
 
-  const handleRightClickToHold = (e: MouseEvent<HTMLLIElement>) => {
+  const handleRightClickToHold = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     handlePressedIndex(ClickType.RIGHTADD);
   };
 
-  const handleRightClickToRelease = (e: MouseEvent<HTMLLIElement>) => {
+  const handleRightClickToRelease = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     handlePressedIndex(ClickType.RIGHTDEL);
   };
@@ -59,21 +70,36 @@ function Cell({
   switch (cellSettings.isOpen) {
     case CellType['opened-bombed-all']:
       return (
-        <StyledCell data-status={CellBombStatusType.OPENED}>
+        <StyledCell
+          type="button"
+          aria-label="Opened cell with a bomb"
+          disabled
+          data-status={CellBombStatusType.OPENED}
+        >
           <FontAwesomeIcon icon={faBomb} />
         </StyledCell>
       );
 
     case CellType['opened-bombed-chosen']:
       return (
-        <StyledCell data-status={CellBombStatusType.BOMBED}>
+        <StyledCell
+          type="button"
+          aria-label="Bomb hit"
+          disabled
+          data-status={CellBombStatusType.BOMBED}
+        >
           <FontAwesomeIcon icon={faBomb} />
         </StyledCell>
       );
 
     case CellType['opened-bombed-questioned']:
       return (
-        <StyledCell data-status={CellBombStatusType.OPENED}>
+        <StyledCell
+          type="button"
+          aria-label="Opened bomb marked with a question mark"
+          disabled
+          data-status={CellBombStatusType.OPENED}
+        >
           <FontAwesomeIcon icon={faQuestion} />
           <FontAwesomeIcon icon={faBomb} className="cell-icon-secondary" />
         </StyledCell>
@@ -82,6 +108,13 @@ function Cell({
     case CellType['opened-free']:
       return (
         <StyledCell
+          type="button"
+          aria-label={
+            cellSettings.nearbyBombs === 0
+              ? 'Empty cell'
+              : `Opened cell with ${cellSettings.nearbyBombs} nearby bombs`
+          }
+          disabled
           data-status={
             cellSettings.nearbyBombs > 0 ? CellBombStatusType.OPENED : CellBombStatusType.EMPTY
           }
@@ -93,6 +126,9 @@ function Cell({
     case CellType.questioned:
       return (
         <StyledCell
+          type="button"
+          aria-label="Closed cell marked with a question mark"
+          disabled={isDisabled}
           data-status={CellBombStatusType.QUESTIONED}
           onClick={handleLeftClick}
           onContextMenu={handleRightClickToRelease}
@@ -103,6 +139,9 @@ function Cell({
     default:
       return (
         <StyledCell
+          type="button"
+          aria-label="Closed cell"
+          disabled={isDisabled}
           data-status={CellBombStatusType.DEFAULT}
           onClick={handleLeftClick}
           onContextMenu={handleRightClickToHold}

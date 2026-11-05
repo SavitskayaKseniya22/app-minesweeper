@@ -20,6 +20,7 @@ function Stats() {
       <StyledContainerCentred>
         <StyledTransparentButton
           type="button"
+          aria-label="Back to game setup"
           onClick={() => {
             navigate('/');
           }}
@@ -28,9 +29,9 @@ function Stats() {
         </StyledTransparentButton>
         <StyledList>
           <StyledListItem>
-            <h3>Easy</h3>
+            <h2>Easy</h2>
             <ol>
-              {!easy.first && !easy.second && !easy.third && <li>Пока нет рекордов</li>}
+              {!easy.first && !easy.second && !easy.third && <li>No records yet</li>}
               {easy.first && (
                 <li>
                   {easy.first.name}: {easy.first.time} <br />
@@ -52,9 +53,9 @@ function Stats() {
             </ol>
           </StyledListItem>
           <StyledListItem>
-            <h3>Medium</h3>
+            <h2>Medium</h2>
             <ol>
-              {!medium.first && !medium.second && !medium.third && <li>Пока нет рекордов</li>}
+              {!medium.first && !medium.second && !medium.third && <li>No records yet</li>}
               {medium.first && (
                 <li>
                   {medium.first.name}: {medium.first.time}
@@ -78,9 +79,9 @@ function Stats() {
             </ol>
           </StyledListItem>
           <StyledListItem>
-            <h3>Hard</h3>
+            <h2>Hard</h2>
             <ol>
-              {!hard.first && !hard.second && !hard.third && <li>Пока нет рекордов</li>}
+              {!hard.first && !hard.second && !hard.third && <li>No records yet</li>}
               {hard.first && (
                 <li>
                   {hard.first.name}: {hard.first.time}

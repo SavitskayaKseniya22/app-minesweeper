@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors } from '@/styles/tokens';
+import { colors, fonts } from '@/styles/tokens';
 
 export const BasicStyledContainer = css`
   position: relative;
@@ -30,13 +30,16 @@ export const BasicStyledContainer = css`
     border-top: none;
   }
 
-  & > h3 {
+  & > h2,
+  & > label {
     position: absolute;
     top: -1.1rem;
     left: 20px;
     display: block;
     padding: 0 10px;
     margin: 0;
+    font-family: ${fonts.body};
+    font-size: 1.1rem;
     line-height: 1.1rem;
     color: ${colors.accent};
     text-transform: uppercase;

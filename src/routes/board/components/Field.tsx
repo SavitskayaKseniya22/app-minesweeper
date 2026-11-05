@@ -32,7 +32,7 @@ import {
 import { ClickType, DifficultyType, FinishedGameStatusType } from '@/utils/interfaces';
 import { updateScoreTable } from '@/store/ScoreTableSlice';
 
-export const StyledField = styled.ul<{
+export const StyledField = styled.div<{
   'data-difficulty': DifficultyType;
   'data-disabled': boolean;
 }>`
@@ -119,6 +119,7 @@ function Field() {
       rawCellsList.map((item, index) => (
         <Cell
           key={index.toString() + item.nearbyBombs}
+          isDisabled={Boolean(isGameFinished)}
           handleStartAndFinishGame={() => {
             if (!isGameStarted) {
               dispatch(setStartIndex(index));
@@ -146,7 +147,7 @@ function Field() {
           cellSettings={item}
         />
       )),
-    [bombNumber, dispatch, isGameStarted, rawCellsList, right.list.length]
+    [bombNumber, dispatch, isGameFinished, isGameStarted, rawCellsList, right.list.length]
   );
 
   useEffect(() => {
@@ -191,7 +192,12 @@ function Field() {
   ]);
 
   return (
-    <StyledField data-disabled={Boolean(isGameFinished)} data-difficulty={difficulty}>
+    <StyledField
+      role="group"
+      aria-label="Minesweeper board"
+      data-disabled={Boolean(isGameFinished)}
+      data-difficulty={difficulty}
+    >
       {cellsList}
     </StyledField>
   );

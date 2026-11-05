@@ -47,15 +47,11 @@ export const GlobalStyle = createGlobalStyle`
     min-width: 200px;
   }
 
+  h1,
   h2 {
     margin: 0;
     font-family: ${fonts.display};
     font-size: 4rem;
-  }
-
-  h3 {
-    font-family: ${fonts.body};
-    font-size: 1.1rem;
   }
 
   ul {

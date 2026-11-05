@@ -18,7 +18,7 @@ export const StyledHeader = styled('header')`
 function Header() {
   return (
     <StyledHeader>
-      <h2>Find your way through the wastelands</h2>
+      <h1>Find your way through the wastelands</h1>
     </StyledHeader>
   );
 }

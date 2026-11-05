@@ -62,7 +62,3 @@ npm start
 <img width="1920" height="1080" alt="Screenshot 2026-11-06 at 00-13-12 Minesweeper" src="https://github.com/user-attachments/assets/fbbb7495-fd87-437c-880d-c69ebdfb1d7a" />
 <img width="1920" height="1080" alt="Screenshot 2026-11-06 at 00-13-19 Minesweeper" src="https://github.com/user-attachments/assets/7851197d-5a25-4d96-8355-0ccdbdc15a27" />
 <img width="1920" height="1080" alt="Screenshot 2026-11-06 at 00-13-25 Minesweeper" src="https://github.com/user-attachments/assets/dc0145f0-a4fd-45d9-98e8-30982e2fb670" />
-
-
-
-

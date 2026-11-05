@@ -120,6 +120,7 @@ function MainPage() {
       <StyledContainerCentred>
         <StyledTransparentButton
           type="button"
+          aria-label="View records"
           onClick={() => {
             navigate('/stats');
           }}
@@ -136,16 +137,17 @@ function MainPage() {
           }}
         >
           <StyledContainer>
-            <h3>Choose game difficulty</h3>
-            <select {...register(MainFormFieldType.DIFFICULTY)}>
+            <label htmlFor="difficulty">Choose game difficulty</label>
+            <select id="difficulty" {...register(MainFormFieldType.DIFFICULTY)}>
               <option value="easy">easy</option>
               <option value="medium">medium</option>
               <option value="hard">hard</option>
             </select>
           </StyledContainer>
           <StyledContainer>
-            <h3>Enter number of bombs</h3>
+            <label htmlFor="bombNumber">Enter number of bombs</label>
             <input
+              id="bombNumber"
               type="number"
               min={range.min}
               max={range.max}
@@ -174,8 +176,9 @@ function MainPage() {
           </StyledContainer>
 
           <StyledContainer>
-            <h3>Enter a name</h3>
+            <label htmlFor="name">Enter a name</label>
             <input
+              id="name"
               type="text"
               {...register(MainFormFieldType.NAME, {
                 required: {
