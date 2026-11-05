@@ -56,18 +56,6 @@ npm install
 npm start
 ```
 
-## Useful commands
-
-```bash
-npm run build        # Type-check and create a production build
-npm run preview      # Preview the production build locally
-npm run lint         # Run ESLint and Stylelint
-npm run format       # Format files and order CSS properties
-npm run format:check # Check Prettier formatting and CSS property order
-```
-
-The game progress and records are stored locally in the browser. A shared leaderboard is not implemented yet.
-
 ## Screenshots
 
 <img width="1920" height="1080" alt="Screenshot 2026-11-06 at 00-13-01 Minesweeper" src="https://github.com/user-attachments/assets/f09fb5a1-61df-47dc-9942-cfc59ac19581" />
