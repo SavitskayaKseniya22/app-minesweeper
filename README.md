@@ -70,5 +70,11 @@ The game progress and records are stored locally in the browser. A shared leader
 
 ## Screenshots
 
-![Main menu](https://github.com/SavitskayaKseniya22/minesweeper/assets/77901301/89a4f244-c45d-4135-85b4-5ea481c11673)
-![Game board](https://github.com/SavitskayaKseniya22/minesweeper/assets/77901301/a2793c08-082e-49fd-8a5e-0e41faae51aa)
+<img width="1920" height="1080" alt="Screenshot 2026-11-06 at 00-13-01 Minesweeper" src="https://github.com/user-attachments/assets/f09fb5a1-61df-47dc-9942-cfc59ac19581" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-06 at 00-13-12 Minesweeper" src="https://github.com/user-attachments/assets/fbbb7495-fd87-437c-880d-c69ebdfb1d7a" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-06 at 00-13-19 Minesweeper" src="https://github.com/user-attachments/assets/7851197d-5a25-4d96-8355-0ccdbdc15a27" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-06 at 00-13-25 Minesweeper" src="https://github.com/user-attachments/assets/dc0145f0-a4fd-45d9-98e8-30982e2fb670" />
+
+
+
+
