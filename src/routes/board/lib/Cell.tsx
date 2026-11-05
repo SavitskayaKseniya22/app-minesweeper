@@ -1,25 +1,30 @@
-import React, { useCallback } from 'react';
+import type { MouseEvent } from 'react';
 import { faBomb, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { CellBombStatusType, CellType, ClickType } from '../../../utils/interfaces';
 import { checkFontColor, checkBackgroundColor } from '../../../utils/utils';
+import { fonts } from '../../../styles/tokens';
 
 export const StyledCell = styled('li')<{ 'data-status'?: CellBombStatusType }>`
-  color: ${(props) => checkFontColor(props['data-status'])};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: ${(props) => checkBackgroundColor(props['data-status'])};
-  font-family: 'Overseer', sans-serif;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ${fonts.display};
+  color: ${(props) => checkFontColor(props['data-status'])};
+  cursor: ${(props) =>
+    props['data-status'] === CellBombStatusType.DEFAULT ||
+    props['data-status'] === CellBombStatusType.QUESTIONED
+      ? 'pointer'
+      : 'default'};
+  background-color: ${(props) => checkBackgroundColor(props['data-status'])};
 
-  .cell__icon_additioned {
+  .cell-icon-secondary {
     position: absolute;
-    font-size: 0.6rem;
-    bottom: 0.2rem;
     right: 0.2rem;
+    bottom: 0.2rem;
+    font-size: 0.6rem;
   }
 `;
 
@@ -36,26 +41,20 @@ function Cell({
   handleStartAndFinishGame: () => void;
   handlePressedIndex: (button: ClickType) => void;
 }) {
-  const handleLeftClick = useCallback(() => {
+  const handleLeftClick = () => {
     handleStartAndFinishGame();
     handlePressedIndex(ClickType.LEFT);
-  }, [handlePressedIndex, handleStartAndFinishGame]);
+  };
 
-  const handleRightClickToHold = useCallback(
-    (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-      e.preventDefault();
-      handlePressedIndex(ClickType.RIGHTADD);
-    },
-    [handlePressedIndex]
-  );
+  const handleRightClickToHold = (e: MouseEvent<HTMLLIElement>) => {
+    e.preventDefault();
+    handlePressedIndex(ClickType.RIGHTADD);
+  };
 
-  const handleRightClickToRelease = useCallback(
-    (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-      e.preventDefault();
-      handlePressedIndex(ClickType.RIGHTDEL);
-    },
-    [handlePressedIndex]
-  );
+  const handleRightClickToRelease = (e: MouseEvent<HTMLLIElement>) => {
+    e.preventDefault();
+    handlePressedIndex(ClickType.RIGHTDEL);
+  };
 
   switch (cellSettings.isOpen) {
     case CellType['opened-bombed-all']:
@@ -76,7 +75,7 @@ function Cell({
       return (
         <StyledCell data-status={CellBombStatusType.OPENED}>
           <FontAwesomeIcon icon={faQuestion} />
-          <FontAwesomeIcon icon={faBomb} className="cell__icon_additioned" />
+          <FontAwesomeIcon icon={faBomb} className="cell-icon-secondary" />
         </StyledCell>
       );
 
@@ -112,6 +111,4 @@ function Cell({
   }
 }
 
-const CellMemo = React.memo(Cell);
-
-export default CellMemo;
+export default Cell;

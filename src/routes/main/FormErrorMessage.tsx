@@ -9,6 +9,7 @@ import { MainFormFieldType } from '../../utils/interfaces';
 export const StyledErrorMessage = styled('li')`
   ${BasicStyledContainer}
   gap:0;
+
   p {
     flex-grow: 2;
   }
@@ -40,9 +41,9 @@ export const StyledErrorMessagesList = styled('ul')`
   top: 2rem;
   left: 2rem;
   display: flex;
-  width: 300px;
   flex-direction: column;
   gap: 1rem;
+  width: 300px;
 `;
 
 export function FormErrorMessagesList({

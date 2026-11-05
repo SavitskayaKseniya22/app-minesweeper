@@ -1,80 +1,68 @@
 import { createGlobalStyle } from 'styled-components';
-import background from '../assets/images/main-background2.jpg';
 import overseer from '../assets/fonts/Overseer/OverseerItalic.otf';
+import { colors, fonts } from '../styles/tokens';
 
 export const FontStyles = createGlobalStyle`
-
-@font-face {
-  font-family: 'Overseer';
-  src: url(${overseer}) format('otf'),   
-}
-
+  @font-face {
+    font-family: Overseer;
+    src: url(${overseer}) format('opentype');
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
-
-  
   * {
     box-sizing: border-box;
   }
 
-  #root{
-    width: 100vw;
-    height: 100vh;
+  #root {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-size:100%;
-    background-position: center;
-    background-repeat:no-repeat;
-    background-image:url(${background});
-    color:white;
-    font-family: 'Roboto Condensed', sans-serif;
-    
+    width: 100%;
+    min-height: 100vh;
+    font-family: ${fonts.body};
+    color: white;
+    background-color: ${colors.background};
+    background-image:
+      radial-gradient(ellipse at 50% 42%, rgba(28, 76, 45, 0.38), transparent 62%),
+      radial-gradient(ellipse at 12% 88%, rgba(95, 72, 28, 0.12), transparent 42%),
+      repeating-linear-gradient(0deg, transparent 0 3px, rgba(0, 0, 0, 0.12) 3px 4px),
+      linear-gradient(135deg, #101b14 0%, ${colors.background} 55%, #0b1510 100%);
+    background-attachment: fixed;
   }
 
-  main{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-    flex-grow:1;
-    
+  main {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
   }
 
-  aside{
-    width:200px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    gap:0.5rem;
+  aside {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: space-between;
+    min-width: 200px;
   }
 
-  
-
-  h2{
-     font-family: 'Overseer', sans-serif;
-     font-size: 4rem;
-     margin:0;
-  }
-  
-  h3{
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size:1.1rem;
+  h2 {
+    margin: 0;
+    font-family: ${fonts.display};
+    font-size: 4rem;
   }
 
-  li{
-    list-style:none;
+  h3 {
+    font-family: ${fonts.body};
+    font-size: 1.1rem;
   }
 
-
-  ul{
-    margin:0;
-    padding:0;
-    
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
   }
-
-  
 `;
 
 export default GlobalStyle;

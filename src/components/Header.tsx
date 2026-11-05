@@ -1,10 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { colors } from '../styles/tokens';
 
 export const StyledHeader = styled('header')`
-  background: rgba(0, 0, 0, 0.5);
-  text-align: center;
   padding: 1rem;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    ${colors.headerShade},
+    rgba(17, 39, 25, 0.48),
+    ${colors.headerShade}
+  );
+  border-bottom: 1px solid rgba(112, 173, 119, 0.18);
+  backdrop-filter: blur(8px);
 `;
 
 function Header() {

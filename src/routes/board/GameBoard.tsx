@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Field from './lib/Field';
@@ -6,6 +7,7 @@ import BombsCounter from './lib/BombsCounter';
 import MovesCounter from './lib/MovesCounter';
 import Stopwatch from './lib/Stopwatch';
 import {
+  StyledAsideItem,
   StyledAsideItemExtended,
   StyledButtonWide,
   StyledContainerCentred,
@@ -15,12 +17,37 @@ import { resetGameCycle, updateFinishGameStatus } from '../../store/GameCycleSli
 import { resetGameData } from '../../store/GameDataSlice';
 import { resetStopwatch } from '../../store/StopwatchSlice';
 import { FinishedGameStatusType } from '../../utils/interfaces';
+import type { ScoreItemState, ScoreLevelState, ScoreTableState } from '../../store/ScoreTableSlice';
+
+const StyledPlayerName = styled('div')`
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+function getBestUserRecord(name: string, scoreTable: ScoreTableState) {
+  const records = (Object.entries(scoreTable) as [string, ScoreLevelState][]).flatMap(
+    ([difficulty, level]) =>
+      Object.values(level).flatMap((record) =>
+        record?.name === name ? [{ ...record, difficulty }] : []
+      )
+  );
+
+  return records.reduce<(ScoreItemState & { difficulty: string }) | undefined>(
+    (latest, record) => (!latest || record.time < latest.time ? record : latest),
+    undefined
+  );
+}
 
 function GameBoard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const gameCycleValues = useSelector((state: RootState) => state.gameCycle);
   const { isGameStarted, isGameFinished, isItRecord } = gameCycleValues;
+  const name = useSelector((state: RootState) => state.user.name);
+  const scoreTable = useSelector((state: RootState) => state.scoreTable);
+  const bestUserRecord = getBestUserRecord(name, scoreTable);
 
   return (
     <main>
@@ -31,7 +58,16 @@ function GameBoard() {
           <MovesCounter />
           <Stopwatch />
 
-          <StyledAsideItemExtended className="gameInfo">
+          <StyledAsideItem>
+            <StyledPlayerName title={name}>Player: {name}</StyledPlayerName>
+            {bestUserRecord && (
+              <div>
+                Best record: {bestUserRecord.time}s ({bestUserRecord.difficulty})
+              </div>
+            )}
+          </StyledAsideItem>
+
+          <StyledAsideItemExtended>
             {isGameFinished === FinishedGameStatusType.LOSE && <span>Game over!</span>}
             {isGameFinished === FinishedGameStatusType.WIN && <span>Game win!</span>}
             <br />

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Normalize } from 'styled-normalize';
 import { Provider } from 'react-redux';
 import App from './App';
-import { GlobalStyle } from './components/GlobalStyle';
+import { FontStyles, GlobalStyle } from './components/GlobalStyle';
 import { store } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -12,6 +12,7 @@ root.render(
     <Provider store={store}>
       <App />
       <Normalize />
+      <FontStyles />
       <GlobalStyle />
     </Provider>
   </React.StrictMode>

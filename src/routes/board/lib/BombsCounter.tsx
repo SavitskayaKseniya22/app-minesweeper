@@ -1,4 +1,3 @@
-import React from 'react';
 import { faBomb } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
@@ -18,6 +17,4 @@ function BombsCounter() {
   );
 }
 
-const BombsCounterMemo = React.memo(BombsCounter);
-
-export default BombsCounterMemo;
+export default BombsCounter;

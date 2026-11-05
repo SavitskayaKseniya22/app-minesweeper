@@ -7,6 +7,7 @@ import {
   FinishedGameStatusType,
   GameDataState,
 } from './interfaces';
+import { colors } from '../styles/tokens';
 
 export function clearOfDuplicates(array: number[]) {
   return Array.from(new Set(array));
@@ -72,13 +73,13 @@ export function checkGridSize(prop: DifficultyType) {
 export function checkBackgroundColor(prop: CellBombStatusType | undefined) {
   switch (prop) {
     case CellBombStatusType.OPENED:
-      return '#9c8f77';
+      return colors.openedCell;
     case CellBombStatusType.EMPTY:
-      return 'rgba(0, 47, 0, 0.8)';
+      return colors.backgroundPanelSolid;
     case CellBombStatusType.BOMBED:
-      return 'red';
+      return colors.bombedCell;
     case CellBombStatusType.QUESTIONED:
-      return 'orange';
+      return colors.questionedCell;
     default:
       return 'white';
   }
@@ -87,10 +88,10 @@ export function checkBackgroundColor(prop: CellBombStatusType | undefined) {
 export function checkFontColor(prop: CellBombStatusType | undefined) {
   switch (prop) {
     case CellBombStatusType.EMPTY:
-      return 'transparent';
+      return colors.emptyCellText;
 
     default:
-      return 'black';
+      return colors.defaultCellText;
   }
 }
 
@@ -111,7 +112,7 @@ export function getNearbyBombs(i: number, dataToMakeCells: number[], width: numb
     nearbyBombs.push(dataToMakeCells[item]);
   });
 
-  return nearbyBombs.filter((value) => value !== undefined).reduce((a, b) => a + b);
+  return nearbyBombs.reduce((sum, value) => sum + (value ?? 0), 0);
 }
 
 export function getCellsContentList(
@@ -124,20 +125,16 @@ export function getCellsContentList(
     return arrayOfEmptyCells;
   }
 
-  const arrayOfBombs: number[] = new Array(bombNumber).fill(1);
-  const gameSetup = shuffle(
-    arrayOfBombs.concat(arrayOfEmptyCells).slice(0, arrayOfEmptyCells.length)
+  const availableIndexes = Array.from({ length: cellsNumber }, (_, index) => index).filter(
+    (index) => index !== startIndex
   );
+  shuffle(availableIndexes)
+    .slice(0, bombNumber)
+    .forEach((index) => {
+      arrayOfEmptyCells[index] = 1;
+    });
 
-  const elemToTransfer = gameSetup.slice(startIndex, startIndex + 1);
-  const indexToTransfer = [gameSetup.indexOf(startIndex + 1), gameSetup.indexOf(0), 0].sort(
-    (a, b) => b - a
-  )[0];
-
-  gameSetup.splice(startIndex, 1, 0);
-  gameSetup.splice(indexToTransfer, 1, elemToTransfer[0]);
-
-  return gameSetup;
+  return arrayOfEmptyCells;
 }
 
 export function addOpenedChunk(i: number, shortRange: number[][], longRange: number[][]) {

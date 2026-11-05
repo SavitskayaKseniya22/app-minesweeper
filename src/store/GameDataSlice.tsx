@@ -80,13 +80,7 @@ export const gameDataSlice = createSlice({
       state.clicks.endIndex = action.payload;
     },
 
-    resetGameData: (state) => {
-      state.clicks.endIndex = initialState.clicks.endIndex;
-      state.clicks.startIndex = initialState.clicks.startIndex;
-      state.clicks.left = initialState.clicks.left;
-      state.clicks.right = initialState.clicks.right;
-      state.initData = initialState.initData;
-    },
+    resetGameData: () => initialState,
   },
 });
 

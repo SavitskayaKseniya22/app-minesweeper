@@ -55,12 +55,12 @@ export const scoreTableSlice = createSlice({
       const { place, data, difficulty } = action.payload;
       switch (place) {
         case 1:
-          state[difficulty].third = state.easy.second;
-          state[difficulty].second = state.easy.first;
+          state[difficulty].third = state[difficulty].second;
+          state[difficulty].second = state[difficulty].first;
           state[difficulty].first = data;
           break;
         case 2:
-          state[difficulty].third = state.easy.second;
+          state[difficulty].third = state[difficulty].second;
           state[difficulty].second = data;
           break;
         case 3:
@@ -71,11 +71,7 @@ export const scoreTableSlice = createSlice({
       }
     },
 
-    resetScoreTable: (state) => {
-      state.easy = initialState.easy;
-      state.hard = initialState.hard;
-      state.medium = initialState.medium;
-    },
+    resetScoreTable: () => initialState,
   },
 });
 

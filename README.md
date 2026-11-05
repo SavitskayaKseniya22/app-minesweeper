@@ -55,4 +55,3 @@ npm start
 ## To do
 
 - [ ] Global point storage for all users
-

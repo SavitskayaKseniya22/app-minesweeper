@@ -1,41 +1,46 @@
 import styled, { css } from 'styled-components';
+import { colors } from '../styles/tokens';
 
 export const BasicStyledContainer = css`
-  background-color: rgba(0, 47, 0, 0.8);
-  padding: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
   position: relative;
-  &:before,
-  &:after {
-    content: ' ';
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: ${colors.backgroundPanel};
+
+  &::before,
+  &::after {
     position: absolute;
+    left: -2px;
     width: 100%;
     height: 3px;
-    border: 2px solid #00ee00;
-    left: -2px;
+    content: ' ';
+    border: 2px solid ${colors.accent};
   }
-  &:before {
-    border-bottom: none;
+
+  &::before {
     top: 0;
+    border-bottom: none;
   }
-  &:after {
-    border-top: none;
+
+  &::after {
     bottom: 0;
+    border-top: none;
   }
+
   & > h3 {
-    text-transform: uppercase;
     position: absolute;
     top: -1.1rem;
     left: 20px;
-    margin: 0;
-    color: #00ee00;
     display: block;
     padding: 0 10px;
+    margin: 0;
     line-height: 1.1rem;
-    border-bottom: 2px solid rgba(0, 47, 0, 0.8);
+    color: ${colors.accent};
+    text-transform: uppercase;
+    border-bottom: 2px solid ${colors.backgroundPanelSolid};
   }
 `;
 export const StyledContainer = styled('div')`
@@ -43,19 +48,15 @@ export const StyledContainer = styled('div')`
 `;
 
 export const StyledContainerCentred = styled(StyledContainer)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 3rem 10rem;
   align-items: unset;
+  padding: 3rem 10rem;
 `;
 
 export const StyledList = styled('ul')`
-  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  width: 300px;
 `;
 
 export const StyledListItem = styled('li')`
@@ -63,20 +64,21 @@ export const StyledListItem = styled('li')`
   ol {
     width: 100%;
   }
+
   li {
-    list-style-type: decimal;
     list-style: unset;
+    list-style-type: decimal;
   }
 `;
 
-export const StyledAsideItem = styled('li')`
-  background-color: rgba(0, 47, 0, 1);
-  border-bottom: 2px solid black;
-  border-right: 1px solid black;
-  color: #00ee00;
+export const StyledAsideItem = styled('div')`
+  flex-grow: 0;
   padding: 0.5rem;
   font-size: 1.2rem;
-  flex-grow: 0;
+  color: ${colors.accent};
+  background-color: ${colors.backgroundPanelSolid};
+  border-right: 1px solid black;
+  border-bottom: 2px solid black;
 `;
 
 export const StyledAsideItemExtended = styled(StyledAsideItem)`
@@ -84,17 +86,22 @@ export const StyledAsideItemExtended = styled(StyledAsideItem)`
 `;
 
 export const StyledButton = styled('button')`
-  background-color: #00ee00;
-  color: rgba(0, 47, 0, 1);
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 0.5rem;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-size: 1.2rem;
   position: relative;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: ${colors.backgroundPanelSolid};
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  background-color: ${colors.accent};
+  border: none;
+
+  &:focus-visible {
+    outline: 2px solid ${colors.focus};
+    outline-offset: 3px;
+  }
 `;
 
 export const StyledButtonWide = styled(StyledButton)`
@@ -102,10 +109,10 @@ export const StyledButtonWide = styled(StyledButton)`
 `;
 
 export const StyledTransparentButton = styled(StyledButton)`
-  background-color: transparent;
-  color: #00ee00;
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
   font-size: 2rem;
+  color: ${colors.accent};
+  background-color: transparent;
 `;

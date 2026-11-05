@@ -3,7 +3,6 @@ import { Route, Outlet, createBrowserRouter, createRoutesFromElements } from 're
 import GameBoard from './routes/board/GameBoard';
 import MainPage from './routes/main/MainPage';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Stats from './routes/stats/Stats';
 import NotFound from './routes/not-found/NotFound';
 
@@ -14,7 +13,6 @@ const router = createBrowserRouter(
         <>
           <Header />
           <Outlet />
-          <Footer />
         </>
       }
     >

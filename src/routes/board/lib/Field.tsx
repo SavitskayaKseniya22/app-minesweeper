@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Cell from './Cell';
@@ -37,13 +37,12 @@ export const StyledField = styled.ul<{
   'data-difficulty': DifficultyType;
   'data-disabled': boolean;
 }>`
+  display: grid;
+  grid-template-rows: ${(props) => checkGridSize(props['data-difficulty'])};
+  grid-template-columns: ${(props) => checkGridSize(props['data-difficulty'])};
+  gap: 1px;
   width: ${(props) => checkSize(props['data-difficulty'])};
   height: ${(props) => checkSize(props['data-difficulty'])};
-  display: grid;
-  grid-template-columns: ${(props) => checkGridSize(props['data-difficulty'])};
-  grid-template-rows: ${(props) => checkGridSize(props['data-difficulty'])};
-  grid-column-gap: 1px;
-  grid-row-gap: 1px;
   pointer-events: ${(props) => (props['data-disabled'] ? 'none' : 'auto')};
 `;
 
@@ -199,6 +198,4 @@ function Field() {
   );
 }
 
-const FieldMemo = React.memo(Field);
-
-export default FieldMemo;
+export default Field;

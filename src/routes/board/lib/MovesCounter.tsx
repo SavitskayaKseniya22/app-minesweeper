@@ -1,4 +1,3 @@
-import React from 'react';
 import { faComputerMouse, faL, faR } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -18,6 +17,4 @@ function MovesCounter() {
   );
 }
 
-const MovesCounterMemo = React.memo(MovesCounter);
-
-export default MovesCounterMemo;
+export default MovesCounter;

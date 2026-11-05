@@ -19,6 +19,7 @@ import { resetStopwatch } from '../../store/StopwatchSlice';
 import { updateName } from '../../store/UserSlice';
 import { FormErrorMessagesList } from './FormErrorMessage';
 import { MainFormFieldType } from '../../utils/interfaces';
+import { colors } from '../../styles/tokens';
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -30,12 +31,17 @@ export const StyledForm = styled(Form)`
   select {
     width: 100%;
     padding: 0.5rem;
-    background-color: rgba(0, 47, 0, 0);
-    color: #00ee00;
+    color: ${colors.accent};
     text-align: center;
     cursor: pointer;
-    border: none;
     outline: none;
+    background-color: transparent;
+    border: none;
+
+    &:focus-visible {
+      outline: 2px solid ${colors.focus};
+      outline-offset: 2px;
+    }
   }
 
   input {
@@ -140,14 +146,16 @@ function MainPage() {
           <StyledContainer>
             <h3>Enter number of bombs</h3>
             <input
-              type="text"
+              type="number"
+              min={range.min}
+              max={range.max}
               {...register(MainFormFieldType.BOMBNUMBER, {
                 required: {
                   value: true,
                   message: `Please enter a value between ${range.min} and  ${range.max}.`,
                 },
                 pattern: {
-                  value: /[0-9]+/,
+                  value: /^\d+$/,
                   message: 'The value is not a number.',
                 },
                 max: {
@@ -158,6 +166,8 @@ function MainPage() {
                   value: range.min,
                   message: `The value of bombs is too low. Enter a value between ${range.min} and  ${range.max}.`,
                 },
+                validate: (value) =>
+                  Number.isInteger(Number(value)) || 'Please enter a whole number of bombs.',
               })}
               placeholder={`${String(range.min)} - ${String(range.max)}`}
             />
