@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { CellType, DifficultyType } from '../utils/interfaces';
+import { CellType, DifficultyType } from '@/utils/interfaces';
 
 export interface ScoreItemState {
   name: string;

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import overseer from '../assets/fonts/Overseer/OverseerItalic.otf';
-import { colors, fonts } from '../styles/tokens';
+import overseer from '@/assets/fonts/Overseer/OverseerItalic.otf';
+import { colors, fonts } from '@/styles/tokens';
 
 export const FontStyles = createGlobalStyle`
   @font-face {

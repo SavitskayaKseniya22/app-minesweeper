@@ -10,16 +10,16 @@ import {
   StyledContainer,
   StyledContainerCentred,
   StyledTransparentButton,
-} from '../../components/styledComponents';
-import { updateFieldParameters, updateFormValues } from '../../store/GameSettingsSlice';
-import { RootState } from '../../store/store';
-import { resetGameData } from '../../store/GameDataSlice';
-import { resetGameCycle } from '../../store/GameCycleSlice';
-import { resetStopwatch } from '../../store/StopwatchSlice';
-import { updateName } from '../../store/UserSlice';
-import { FormErrorMessagesList } from './FormErrorMessage';
-import { MainFormFieldType } from '../../utils/interfaces';
-import { colors } from '../../styles/tokens';
+} from '@/components/styledComponents';
+import { updateFieldParameters, updateFormValues } from '@/store/GameSettingsSlice';
+import { RootState } from '@/store/store';
+import { resetGameData } from '@/store/GameDataSlice';
+import { resetGameCycle } from '@/store/GameCycleSlice';
+import { resetStopwatch } from '@/store/StopwatchSlice';
+import { updateName } from '@/store/UserSlice';
+import { FormErrorMessagesList } from '@/routes/main/FormErrorMessage';
+import { MainFormFieldType } from '@/utils/interfaces';
+import { colors } from '@/styles/tokens';
 
 export const StyledForm = styled(Form)`
   display: flex;

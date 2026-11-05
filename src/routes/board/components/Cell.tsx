@@ -2,9 +2,9 @@ import type { MouseEvent } from 'react';
 import { faBomb, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-import { CellBombStatusType, CellType, ClickType } from '../../../utils/interfaces';
-import { checkFontColor, checkBackgroundColor } from '../../../utils/utils';
-import { fonts } from '../../../styles/tokens';
+import { CellBombStatusType, CellType, ClickType } from '@/utils/interfaces';
+import { checkFontColor, checkBackgroundColor } from '@/utils/cellStyles';
+import { fonts } from '@/styles/tokens';
 
 export const StyledCell = styled('li')<{ 'data-status'?: CellBombStatusType }>`
   position: relative;

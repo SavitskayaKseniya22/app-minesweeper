@@ -2,12 +2,12 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import storageSession from 'redux-persist/es/storage/session';
-import gameSettingsReducer from './GameSettingsSlice';
-import gameCycleReducer from './GameCycleSlice';
-import gameDataReducer from './GameDataSlice';
-import stopwatchReducer from './StopwatchSlice';
-import scoreTableReducer from './ScoreTableSlice';
-import userReducer from './UserSlice';
+import gameSettingsReducer from '@/store/GameSettingsSlice';
+import gameCycleReducer from '@/store/GameCycleSlice';
+import gameDataReducer from '@/store/GameDataSlice';
+import stopwatchReducer from '@/store/StopwatchSlice';
+import scoreTableReducer from '@/store/ScoreTableSlice';
+import userReducer from '@/store/UserSlice';
 
 const persistConfig = {
   key: 'root',

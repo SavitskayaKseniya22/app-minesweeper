@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Outlet, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import GameBoard from './routes/board/GameBoard';
-import MainPage from './routes/main/MainPage';
-import Header from './components/Header';
-import Stats from './routes/stats/Stats';
-import NotFound from './routes/not-found/NotFound';
+import GameBoard from '@/routes/board/GameBoard';
+import MainPage from '@/routes/main/MainPage';
+import Header from '@/components/Header';
+import Stats from '@/routes/stats/Stats';
+import NotFound from '@/routes/not-found/NotFound';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

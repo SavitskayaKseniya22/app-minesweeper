@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getFieldParameters } from '../utils/utils';
-import { DifficultyType } from '../utils/interfaces';
+import { getFieldParameters } from '@/utils/fieldConfig';
+import { DifficultyType } from '@/utils/interfaces';
 
 export interface FormValuesState {
   difficulty: DifficultyType;

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { GameDataState } from '../utils/interfaces';
-import { clearOfDuplicates } from '../utils/utils';
+import { GameDataState } from '@/utils/interfaces';
+import { clearOfDuplicates } from '@/utils/game';
 
 const initialState: GameDataState = {
   clicks: {

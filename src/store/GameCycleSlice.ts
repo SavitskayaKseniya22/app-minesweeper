@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FinishedGameStatusType } from '../utils/interfaces';
+import { FinishedGameStatusType } from '@/utils/interfaces';
 
 export interface GameCycleState {
   isGameStarted: boolean;

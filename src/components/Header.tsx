@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../styles/tokens';
+import { colors } from '@/styles/tokens';
 
 export const StyledHeader = styled('header')`
   padding: 1rem;

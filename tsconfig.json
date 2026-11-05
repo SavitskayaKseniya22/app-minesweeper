@@ -11,6 +11,9 @@
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "Bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

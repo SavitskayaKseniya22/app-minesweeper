@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledAsideItem } from '../../../components/styledComponents';
-import { increaseStopwatchValue } from '../../../store/StopwatchSlice';
-import { RootState } from '../../../store/store';
+import { StyledAsideItem } from '@/components/styledComponents';
+import { increaseStopwatchValue } from '@/store/StopwatchSlice';
+import { RootState } from '@/store/store';
 
 function Stopwatch() {
   const stopwatch = useSelector((state: RootState) => state.stopwatch);

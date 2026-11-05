@@ -2,22 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Field from './lib/Field';
-import BombsCounter from './lib/BombsCounter';
-import MovesCounter from './lib/MovesCounter';
-import Stopwatch from './lib/Stopwatch';
+import Field from '@/routes/board/components/Field';
+import BombsCounter from '@/routes/board/components/BombsCounter';
+import MovesCounter from '@/routes/board/components/MovesCounter';
+import Stopwatch from '@/routes/board/components/Stopwatch';
 import {
   StyledAsideItem,
   StyledAsideItemExtended,
   StyledButtonWide,
   StyledContainerCentred,
-} from '../../components/styledComponents';
-import { RootState } from '../../store/store';
-import { resetGameCycle, updateFinishGameStatus } from '../../store/GameCycleSlice';
-import { resetGameData } from '../../store/GameDataSlice';
-import { resetStopwatch } from '../../store/StopwatchSlice';
-import { FinishedGameStatusType } from '../../utils/interfaces';
-import type { ScoreItemState, ScoreLevelState, ScoreTableState } from '../../store/ScoreTableSlice';
+} from '@/components/styledComponents';
+import { RootState } from '@/store/store';
+import { resetGameCycle, updateFinishGameStatus } from '@/store/GameCycleSlice';
+import { resetGameData } from '@/store/GameDataSlice';
+import { resetStopwatch } from '@/store/StopwatchSlice';
+import { FinishedGameStatusType } from '@/utils/interfaces';
+import type { ScoreItemState, ScoreLevelState, ScoreTableState } from '@/store/ScoreTableSlice';
 
 const StyledPlayerName = styled('div')`
   max-width: 160px;

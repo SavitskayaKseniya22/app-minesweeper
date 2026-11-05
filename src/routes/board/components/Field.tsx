@@ -1,25 +1,24 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import Cell from './Cell';
+import Cell from '@/routes/board/components/Cell';
 import {
   addOpenedChunk,
-  checkGridSize,
-  checkSize,
   clearOfDuplicates,
   getCellsContentList,
   getCellsList,
   getNearbyBombs,
   isItRecord,
   sortDataToMakeCells,
-} from '../../../utils/utils';
-import getConnectedRanges, { getRangeWithBorder } from '../../../utils/funcsToOpenNearbyEmptyCells';
-import { RootState } from '../../../store/store';
+} from '@/utils/game';
+import { checkGridSize, checkSize } from '@/utils/fieldConfig';
+import getConnectedRanges, { getRangeWithBorder } from '@/utils/emptyRegions';
+import { RootState } from '@/store/store';
 import {
   updateFinishGameStatus,
   updateIsItRecord,
   updateStartGameStatus,
-} from '../../../store/GameCycleSlice';
+} from '@/store/GameCycleSlice';
 import {
   filterRightClicks,
   increaseLeftCounter,
@@ -29,9 +28,9 @@ import {
   updateInitData,
   updateLeftClicks,
   updateRightClicks,
-} from '../../../store/GameDataSlice';
-import { ClickType, DifficultyType, FinishedGameStatusType } from '../../../utils/interfaces';
-import { updateScoreTable } from '../../../store/ScoreTableSlice';
+} from '@/store/GameDataSlice';
+import { ClickType, DifficultyType, FinishedGameStatusType } from '@/utils/interfaces';
+import { updateScoreTable } from '@/store/ScoreTableSlice';
 
 export const StyledField = styled.ul<{
   'data-difficulty': DifficultyType;

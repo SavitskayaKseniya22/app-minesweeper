@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors } from '../styles/tokens';
+import { colors } from '@/styles/tokens';
 
 export const BasicStyledContainer = css`
   position: relative;
