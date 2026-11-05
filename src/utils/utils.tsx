@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-
 import { ScoreLevelState } from '../store/ScoreTableSlice';
 import { getBorderIndexes } from './funcsToOpenNearbyEmptyCells';
 import {

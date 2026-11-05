@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { getFieldParameters } from '../utils/utils';
 import { DifficultyType } from '../utils/interfaces';

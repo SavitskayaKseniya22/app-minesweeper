@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import React, { useEffect } from 'react';
 import { faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +12,6 @@ function Stopwatch() {
   const { isGameStarted, isGameFinished } = gameCycleValues;
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (isGameStarted && !isGameFinished) {
       const intervalId = setInterval(() => {

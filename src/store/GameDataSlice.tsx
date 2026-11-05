@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { GameDataState } from '../utils/interfaces';
 import { clearOfDuplicates } from '../utils/utils';

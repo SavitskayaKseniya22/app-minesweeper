@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-
 function clearOfDuplicates(array: number[]) {
   return Array.from(new Set(array));
 }
