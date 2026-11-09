@@ -57,16 +57,16 @@ function Field() {
   const { cellsNumber, width } = gameSettings.fieldParameters;
 
   const gameData = useSelector((state: RootState) => state.gameData);
-  const { left, right, startIndex } = gameData.clicks;
+  const { left, right } = gameData.clicks;
   const { initData } = gameData;
 
   const scoreTable = useSelector((state: RootState) => state.scoreTable);
   const dataToMakeCells = useMemo(() => {
-    if (initData.length > 0 && initData.find((element) => element !== 0)) {
+    if (initData.length > 0) {
       return initData;
     }
-    return getCellsContentList(cellsNumber, bombNumber, startIndex);
-  }, [bombNumber, cellsNumber, startIndex, initData]);
+    return getCellsContentList(cellsNumber, bombNumber, undefined);
+  }, [bombNumber, cellsNumber, initData]);
 
   useEffect(() => {
     if (JSON.stringify(initData) !== JSON.stringify(dataToMakeCells)) {
@@ -122,6 +122,7 @@ function Field() {
           isDisabled={Boolean(isGameFinished)}
           handleStartAndFinishGame={() => {
             if (!isGameStarted) {
+              dispatch(updateInitData(getCellsContentList(cellsNumber, bombNumber, index)));
               dispatch(setStartIndex(index));
               dispatch(updateStartGameStatus(true));
             }
@@ -147,7 +148,15 @@ function Field() {
           cellSettings={item}
         />
       )),
-    [bombNumber, dispatch, isGameFinished, isGameStarted, rawCellsList, right.list.length]
+    [
+      bombNumber,
+      cellsNumber,
+      dispatch,
+      isGameFinished,
+      isGameStarted,
+      rawCellsList,
+      right.list.length,
+    ]
   );
 
   useEffect(() => {

@@ -32,6 +32,8 @@ A Minesweeper game with a visual style inspired by Fallout.
 
 ## Getting started
 
+Use Node.js 22.22.1+, 24.x, or 26+ (Node.js 23 and 25 are unsupported).
+
 1. Clone the repository:
 
 ```bash
@@ -54,6 +56,14 @@ npm install
 
 ```bash
 npm start
+```
+
+## Checks
+
+```bash
+npm run build
+npm run lint
+npm run format:check
 ```
 
 ## Screenshots

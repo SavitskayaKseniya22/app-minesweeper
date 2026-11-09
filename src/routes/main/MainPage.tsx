@@ -20,6 +20,7 @@ import { updateName } from '@/store/UserSlice';
 import { FormErrorMessagesList } from '@/routes/main/FormErrorMessage';
 import { MainFormFieldType } from '@/utils/interfaces';
 import { colors } from '@/styles/tokens';
+import { getFieldParameters } from '@/utils/fieldConfig';
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -76,7 +77,7 @@ function MainPage() {
     },
   });
 
-  const { bombNumberDefault, range } = initFormValues.fieldParameters;
+  const { range } = initFormValues.fieldParameters;
   const gameCycleValues = useSelector((state: RootState) => state.gameCycle);
   const { isGameStarted } = gameCycleValues;
 
@@ -94,10 +95,6 @@ function MainPage() {
     control,
     name: MainFormFieldType.NAME,
   });
-
-  useEffect(() => {
-    setValue(MainFormFieldType.BOMBNUMBER, bombNumberDefault);
-  }, [bombNumberDefault, dispatch, setValue]);
 
   useEffect(() => {
     dispatch(updateFormValues({ difficulty, bombNumber: Number(bombNumber) }));
@@ -138,7 +135,17 @@ function MainPage() {
         >
           <StyledContainer>
             <label htmlFor="difficulty">Choose game difficulty</label>
-            <select id="difficulty" {...register(MainFormFieldType.DIFFICULTY)}>
+            <select
+              id="difficulty"
+              {...register(MainFormFieldType.DIFFICULTY, {
+                onChange: (event) => {
+                  setValue(
+                    MainFormFieldType.BOMBNUMBER,
+                    getFieldParameters(event.target.value).bombNumberDefault
+                  );
+                },
+              })}
+            >
               <option value="easy">easy</option>
               <option value="medium">medium</option>
               <option value="hard">hard</option>
